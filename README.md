@@ -1,13 +1,36 @@
 # DriveSense ESP32-CAM - Driver Face Monitoring Module
 
 <div align="center">
+  <img src="https://raw.githubusercontent.com/Pudd11ng/drivesense/main/assets/drivesense_logo.png" alt="DriveSense Logo" width="200"/>
+
   <img src="https://img.shields.io/badge/DriveSense-ESP32CAM-blue.svg" alt="DriveSense ESP32-CAM"/>
   <img src="https://img.shields.io/badge/ESP--IDF-v5.0-orange.svg" alt="ESP-IDF"/>
   <img src="https://img.shields.io/badge/Video-Streaming-green.svg" alt="Video Streaming"/>
   <img src="https://img.shields.io/badge/WiFi-AP%20Mode-red.svg" alt="WiFi AP"/>
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License"/>
 </div>
 
 A specialized ESP32-CAM firmware module designed for the **DriveSense - Intelligent Driver Safety Assistant** system. This module streams real-time video of the driver's face to the DriveSense Flutter mobile application for AI-powered behavior analysis and safety monitoring.
+
+## 📋 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [DriveSense Ecosystem](#-drivesense-ecosystem)
+- [Integration with DriveSense App](#integration-with-drivesense-app)
+- [Key Features](#key-features)
+- [Technical Specifications](#technical-specifications)
+- [Hardware Requirements](#-hardware-requirements)
+- [Software Prerequisites](#-software-prerequisites)
+- [Project Setup and Installation](#-project-setup-and-installation)
+- [DriveSense App Integration](#-drivesense-app-integration)
+- [Manual Testing & Development](#-manual-testing--development)
+- [Configuration Options](#-configuration-options)
+- [Troubleshooting](#-troubleshooting)
+- [Advanced Configuration](#-advanced-configuration)
+- [API Endpoints](#-api-endpoints)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Acknowledgments](#-acknowledgments)
 
 ## 🎯 Project Overview
 
@@ -21,15 +44,24 @@ This ESP32-CAM module is part of the larger DriveSense project:
 - **🔧 Backend API**: [drivesense-backend](https://github.com/Pudd11ng/drivesense-backend) - Node.js server for data processing
 - **📹 ESP32-CAM**: **This repository** - Camera module firmware for driver face streaming
 
+### Key Technologies
+- **Hardware**: ESP32-CAM with optimized camera streaming firmware
+- **Connectivity**: WiFi Access Point mode for dedicated video streaming
+- **Video Processing**: MJPEG streaming at 20 FPS for real-time AI analysis
+- **AI Integration**: Stream format optimized for YOLO object detection
+- **Power Management**: Optimized for 12V vehicle power systems
+- **Multi-Platform**: Compatible with various ESP32-CAM board types
+
 ### Integration with DriveSense App
 
 The ESP32-CAM module works seamlessly with the DriveSense Flutter app:
 
-1. **Video Streaming**: Provides real-time MJPEG stream of driver's face
-2. **AI Processing**: Stream is processed by YOLO models in the Flutter app
+1. **Video Streaming**: Provides real-time MJPEG stream of driver's face (SVGA 800x600 @ 20fps)
+2. **AI Processing**: Stream is processed by YOLOv11 models in the Flutter app
 3. **Behavior Detection**: Detects drowsiness, phone usage, distraction, and intoxication
-4. **Safety Alerts**: Triggers audio/visual alerts based on detected behaviors
+4. **Safety Alerts**: Triggers customized audio alerts with 120-second cooldown system
 5. **Data Analytics**: Contributes to driving behavior analysis and safety scoring
+6. **Emergency Features**: Supports accident detection and emergency contact notifications
 
 ### Key Features
 
@@ -73,10 +105,12 @@ The ESP32-CAM module works seamlessly with the DriveSense Flutter app:
 
 ### DriveSense App Requirements
 
-- **Android device** with Flutter app installed
-- **WiFi capability** to connect to ESP32-CAM network
+- **Android device** with DriveSense Flutter app installed
+- **WiFi capability** to connect to ESP32-CAM network (`drivesense_camera_ds000001`)
+- **Network credentials**: Password `password123` for ESP32-CAM connection
 - **Internet connection** for AI model updates and backend communication
 - **Camera permissions** for supplementary monitoring features
+- **App environment**: Configured with `DEVICE_VIDEO_URL='http://192.168.4.1'`
 
 ## 📋 Software Prerequisites
 
@@ -216,21 +250,31 @@ Invoke-WebRequest -Uri "http://192.168.4.1/" -Method GET
 
 ### 2. Connect DriveSense App
 - **Install**: Download DriveSense app on Android device
-- **WiFi**: Connect to `drivesense_camera_ds000001` network
-- **Password**: Use `password123` (or configured password)
-- **Integration**: App automatically discovers camera at `http://192.168.4.1`
+- **WiFi Connection**: Connect to ESP32-CAM network
+  - **Network Name**: `drivesense_camera_ds000001`
+  - **Password**: `password123`
+  - **Stream URL**: `http://192.168.4.1`
+- **Integration**: App automatically discovers camera stream
+- **Verification**: Check connection status in app settings
 
 ### 3. Start Driver Monitoring
 - **Launch**: Open DriveSense app and start monitoring session
-- **Stream**: App receives real-time video feed from ESP32-CAM
-- **AI Processing**: YOLO models analyze driver behavior in real-time
-- **Alerts**: System triggers alerts for detected risky behaviors
+- **Stream Connection**: App connects to camera stream at `http://192.168.4.1`
+- **AI Processing**: YOLOv11 models analyze driver behavior in real-time
+- **Video Quality**: SVGA (800x600) resolution at 20 FPS for optimal AI detection
+- **Alert System**: Audio alerts with 120-second cooldown for detected behaviors
 
 ### 4. Behavior Detection Features
-- **😴 Drowsiness**: Detects eye closure patterns and yawning
+- **😴 Drowsiness**: Detects eye closure patterns and yawning using YOLOv11
 - **📱 Phone Usage**: Identifies when driver is using mobile device
 - **👀 Distraction**: Monitors driver attention and head position
 - **🍺 Intoxication**: Analyzes facial expressions and behavior patterns
+
+### 5. Integration with DriveSense Ecosystem
+- **Authentication**: Works with Google Sign-In from main app
+- **Cloud Messaging**: Supports Firebase Cloud Messaging for alerts
+- **Backend Integration**: Connects to Node.js backend for data processing
+- **Emergency Features**: Supports accident detection and emergency contact notifications
 
 ## 🖥️ Manual Testing & Development
 
@@ -344,6 +388,21 @@ Test-NetConnection -ComputerName 192.168.4.1 -Port 80
 
 # Verify video stream endpoint
 Invoke-WebRequest -Uri "http://192.168.4.1/" -Method GET
+
+# Check WiFi network availability
+netsh wlan show profiles | Select-String "drivesense_camera_ds000001"
+
+# Test network connectivity
+ping 192.168.4.1
+```
+
+### DriveSense App Environment Check
+```powershell
+# Verify app environment configuration
+# Check .env file contains:
+# DEVICE_VIDEO_URL='http://192.168.4.1'
+# Network: drivesense_camera_ds000001
+# Password: password123
 ```
 
 ## 🛠️ Advanced Configuration
@@ -419,15 +478,17 @@ We welcome contributions to improve the DriveSense ESP32-CAM module! Please foll
 
 ## 📄 License
 
-This project is open source. Please check the license file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
 - **DriveSense Project**: Part of the comprehensive driver safety ecosystem
+- **YOLOv11**: For object detection framework enabling behavior recognition
 - **ESP-IDF Framework**: By Espressif Systems for ESP32 development
 - **ESP32-CAM Community**: For hardware support and contributions
-- **YOLO AI Models**: For enabling real-time behavior detection
 - **Flutter Community**: For mobile app integration capabilities
+- **Firebase**: For cloud messaging services
+- **Freesound**: For audio alert resources
 - **Original Tutorial**: https://esp32tutorials.com/esp32-cam-esp-idf-live-streaming-web-server/
 
 ---
