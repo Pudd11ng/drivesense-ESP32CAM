@@ -1,0 +1,126 @@
+ets Jul 29 2019 12:21:46
+
+rs�ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7176
+load:0x40078000,len:15564
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3904
+entry 0x40080640
+[0;32mI (31) boot: ESP-IDF v5.3.1 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Apr 22 2025 17:05:06[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (35) boot: chip revision: v3.1[0m
+[0;32mI (39) boot.esp32: SPI Speed      : 40MHz[0m
+[0;32mI (44) boot.esp32: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32: SPI Flash Size : 2MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (92) boot: End of partition table[0m
+[0;32mI (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=2bfb0h (180144) map[0m
+[0;32mI (166) esp_image: segment 1: paddr=0003bfd8 vaddr=3ffb0000 size=04040h ( 16448) load[0m
+[0;32mI (172) esp_image: segment 2: paddr=00040020 vaddr=400d0020 size=a2080h (663680) map[0m
+[0;32mI (400) esp_image: segment 3: paddr=000e20a8 vaddr=3ffb4040 size=0110ch (  4364) load[0m
+[0;32mI (402) esp_image: segment 4: paddr=000e31bc vaddr=40080000 size=1d2c4h (119492) load[0m
+[0;32mI (467) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (467) boot: Disabling RNG early entropy source...[0m
+[0;32mI (479) quad_psram: This chip is ESP32-D0WD[0m
+[0;32mI (481) esp_psram: Found 8MB PSRAM device[0m
+[0;32mI (481) esp_psram: Speed: 40MHz[0m
+[0;32mI (483) esp_psram: PSRAM initialized, cache is in low/high (2-core) mode.[0m
+[0;33mW (491) esp_psram: Virtual address not enough for PSRAM, map as much as we can. 4MB is mapped[0m
+[0;32mI (500) cpu_start: Multicore app[0m
+[0;32mI (1409) esp_psram: SPI SRAM memory test OK[0m
+[0;32mI (1417) cpu_start: Pro cpu start user code[0m
+[0;32mI (1417) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (1417) app_init: Application information:[0m
+[0;32mI (1421) app_init: Project name:     esp32_cam_http_stream[0m
+[0;32mI (1427) app_init: App version:      1[0m
+[0;32mI (1431) app_init: Compile time:     Apr 22 2025 17:14:30[0m
+[0;32mI (1437) app_init: ELF file SHA256:  bfee41cd12a6f5d1...[0m
+[0;32mI (1443) app_init: ESP-IDF:          v5.3.1[0m
+[0;32mI (1448) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (1453) efuse_init: Max chip rev:     v3.99 [0m
+[0;32mI (1458) efuse_init: Chip rev:         v3.1[0m
+[0;32mI (1463) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (1470) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM[0m
+[0;32mI (1476) heap_init: At 3FFBB3C8 len 00024C38 (147 KiB): DRAM[0m
+[0;32mI (1483) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM[0m
+[0;32mI (1489) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM[0m
+[0;32mI (1496) heap_init: At 4009D2C4 len 00002D3C (11 KiB): IRAM[0m
+[0;32mI (1502) esp_psram: Adding pool of 4096K of PSRAM memory to heap allocator[0m
+[0;32mI (1511) spi_flash: detected chip: generic[0m
+[0;32mI (1514) spi_flash: flash io: dio[0m
+[0;33mW (1518) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;33mW (1531) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (1543) main_task: Started on CPU0[0m
+[0;32mI (1553) esp_psram: Reserving pool of 32K of internal memory for DMA/internal allocations[0m
+[0;32mI (1553) main_task: Calling app_main()[0m
+[0;32mI (1603) wifi:wifi driver task: 3ffcb760, prio:23, stack:6656, core=0[0m
+[0;32mI (1613) wifi:wifi firmware version: ccaebfa[0m
+[0;32mI (1613) wifi:wifi certification version: v7.0[0m
+[0;32mI (1613) wifi:config NVS flash: enabled[0m
+[0;32mI (1613) wifi:config nano formating: disabled[0m
+[0;32mI (1623) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (1623) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (1633) wifi:Init management short buffer num: 32[0m
+[0;32mI (1633) wifi:Init static tx buffer num: 16[0m
+[0;32mI (1643) wifi:Init tx cache buffer num: 32[0m
+[0;32mI (1643) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (1643) wifi:Init static rx buffer num: 10[0m
+[0;32mI (1653) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (1653) wifi_init: rx ba win: 6[0m
+[0;32mI (1663) wifi_init: accept mbox: 6[0m
+[0;32mI (1663) wifi_init: tcpip mbox: 32[0m
+[0;32mI (1663) wifi_init: udp mbox: 6[0m
+[0;32mI (1673) wifi_init: tcp mbox: 6[0m
+[0;32mI (1673) wifi_init: tcp tx win: 5744[0m
+[0;32mI (1683) wifi_init: tcp rx win: 5744[0m
+[0;32mI (1683) wifi_init: tcp mss: 1440[0m
+[0;32mI (1683) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (1693) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (1703) phy_init: phy_version 4830,54550f7,Jun 20 2024,14:22:08[0m
+[0;32mI (1773) wifi:mode : softAP (08:a6:f7:12:47:99)[0m
+[0;32mI (1783) wifi:Total power save buffer number: 8[0m
+[0;32mI (1783) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1783) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (1783) esp32-cam Webserver: WiFi SoftAP started with SSID:ESP32-CAM-AP password:password123 channel:1[0m
+[0;32mI (1783) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (1803) esp32-cam Webserver: SoftAP started[0m
+[0;32mI (1813) esp32-cam Webserver: SoftAP IP address: 192.168.4.1[0m
+[0;32mI (1813) gpio: GPIO[25]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:2 [0m
+[0;32mI (1823) cam_hal: cam init ok[0m
+[0;32mI (1833) sccb: pin_sda 26 pin_scl 27[0m
+[0;32mI (1833) sccb: sccb_i2c_port=1[0m
+[0;32mI (1833) gpio: GPIO[32]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (1873) camera: Detected camera at address=0x30[0m
+[0;32mI (1873) camera: Detected OV2640 camera[0m
+[0;32mI (1873) camera: Camera PID=0x26 VER=0x42 MIDL=0x7f MIDH=0xa2[0m
+[0;32mI (1963) cam_hal: buffer_size: 32768, half_buffer_size: 4096, node_buffer_size: 2048, node_cnt: 16, total_cnt: 23[0m
+[0;32mI (1963) cam_hal: Allocating 96000 Byte frame buffer in PSRAM[0m
+[0;32mI (1973) cam_hal: cam config ok[0m
+[0;32mI (1973) ov2640: Set PLL: clk_2x: 0, clk_div: 0, pclk_auto: 0, pclk_div: 8[0m
+[0;32mI (2063) esp32-cam Webserver: HTTP server started[0m
+[0;32mI (2063) esp32-cam Webserver: ESP32 CAM Web Server is up and running[0m
+[0;32mI (2073) esp32-cam Webserver: Connect to WiFi network 'ESP32-CAM-AP' with password 'password123'[0m
+[0;32mI (2083) esp32-cam Webserver: Then open http://192.168.4.1 in your browser to view the stream[0m
+[0;32mI (2083) main_task: Returned from app_main()[0m
+[0;32mI (8963) wifi:new:<1,1>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (8963) wifi:station: 70:a8:d3:8a:47:dd join, AID=1, bgn, 40U[0m
+[0;32mI (8983) esp32-cam Webserver: station 70:a8:d3:8a:47:dd joined, AID=1[0m
+[0;32mI (9343) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.2[0m
+[0;32mI (9363) wifi:<ba-add>idx:2 (ifx:1, 70:a8:d3:8a:47:dd), tid:0, ssn:12, winSize:64[0m
+[0;32mI (55933) wifi:new:<1,1>, old:<1,1>, ap:<1,1>, sta:<255,255>, prof:1, snd_ch_cfg:0x0[0m
+[0;32mI (55933) wifi:station: 5a:26:e2:e2:ee:b2 join, AID=2, bgn, 40U[0m
+[0;32mI (55953) esp32-cam Webserver: station 5a:26:e2:e2:ee:b2 joined, AID=2[0m
+[0;32mI (56523) esp_netif_lwip: DHCP server assigned IP to a client, IP is: 192.168.4.4[0m
+[0;32mI (56823) wifi:<ba-add>idx:3 (ifx:1, 5a:26:e2:e2:ee:b2), tid:0, ssn:16, winSize:64[0m
