@@ -2,12 +2,12 @@
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/Pudd11ng/drivesense/main/assets/drivesense_logo.png" alt="DriveSense Logo" width="200"/>
-
-  <img src="https://img.shields.io/badge/DriveSense-ESP32CAM-blue.svg" alt="DriveSense ESP32-CAM"/>
-  <img src="https://img.shields.io/badge/ESP--IDF-v5.0-orange.svg" alt="ESP-IDF"/>
-  <img src="https://img.shields.io/badge/Video-Streaming-green.svg" alt="Video Streaming"/>
-  <img src="https://img.shields.io/badge/WiFi-AP%20Mode-red.svg" alt="WiFi AP"/>
-  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License"/>
+  
+  [![DriveSense](https://img.shields.io/badge/DriveSense-ESP32CAM-blue.svg)](https://github.com/Pudd11ng/drivesense-ESP32CAM)
+  [![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v5.0-orange.svg)](https://docs.espressif.com/projects/esp-idf/)
+  [![Video Streaming](https://img.shields.io/badge/Video-Streaming-green.svg)](https://github.com/Pudd11ng/drivesense-ESP32CAM)
+  [![WiFi AP](https://img.shields.io/badge/WiFi-AP%20Mode-red.svg)](https://github.com/Pudd11ng/drivesense-ESP32CAM)
+  [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 </div>
 
 A specialized ESP32-CAM firmware module designed for the **DriveSense - Intelligent Driver Safety Assistant** system. This module streams real-time video of the driver's face to the DriveSense Flutter mobile application for AI-powered behavior analysis and safety monitoring.
